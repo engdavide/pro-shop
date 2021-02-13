@@ -1,0 +1,24 @@
+{
+  "name": "pro-shop",
+  "version": "1.0.0",
+  "description": "MERN shopping cart app",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/engdavide/pro-shop.git"
+  },
+  "author": "David Eng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/engdavide/pro-shop/issues"
+  },
+  "homepage": "https://github.com/engdavide/pro-shop#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.16"
+  }
+}
