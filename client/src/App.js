@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 import { Header, Footer } from './components/lib'
+import HomeLayout from './layouts/HomeLayout'
 
 const App = () => {
   return (
@@ -8,7 +9,7 @@ const App = () => {
       <Header />
       <main className='py-3'>
         <Container>
-          <h1>herro prease</h1>
+          <HomeLayout />
         </Container>
       </main>
       <Footer />

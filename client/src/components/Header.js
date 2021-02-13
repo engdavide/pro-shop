@@ -10,8 +10,8 @@ export function Header(){
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="ml-auto">
-							<Nav.Link href="#Cart"><i className='fas fa-shopping-cart'></i></Nav.Link>
-							<Nav.Link href="#Login"><i className='fas fa-user'></i></Nav.Link>
+							<Nav.Link href="#Cart"><i className='fas fa-shopping-cart'> Cart</i></Nav.Link>
+							<Nav.Link href="#Login"><i className='fas fa-sign-in-alt'> Login</i></Nav.Link>
 							<NavDropdown title="Dropdown" id="basic-nav-dropdown">
 								<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
 								<NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
