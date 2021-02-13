@@ -2,7 +2,7 @@ import products from '../products'
 import { Row, Col } from 'react-bootstrap'
 import { Product } from '../components/lib'
 
-const HomeLayout = () => {
+export const HomeLayout = () => {
 	return(
 		<>
 			<h1>Products</h1>
@@ -16,5 +16,3 @@ const HomeLayout = () => {
 		</>
 	)
 }
-
-export default HomeLayout
