@@ -10,6 +10,7 @@
     "dev": "concurrently --kill others \"npm run client\" \"npm run server\"",
     "data-import": "node data/seeder.js",
     "data-destroy": "node data/seeder.js -d",
+    "client-install": "npm install --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

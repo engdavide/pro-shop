@@ -8,7 +8,7 @@ import { listProducts } from '../actions/productActions'
 export const HomeLayout = () => {
 	const dispatch = useDispatch()
 	const productList = useSelector( state => state.productList)
-	const { loading, err, products } = productList
+	const { loading, error, products } = productList
 	useEffect(() => {
 		dispatch(listProducts())
 	}, [dispatch])
@@ -18,8 +18,8 @@ export const HomeLayout = () => {
 			<h1>Products</h1>
 			{loading ? (
 			<h2> Loading... </h2>
-				) : err ? (
-				<h3>{err}</h3> 
+				) : error ? (
+				<h3>{error}</h3> 
 				) : (
 					<Row>
 						{products.map( product => (
