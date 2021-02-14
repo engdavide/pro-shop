@@ -1,4 +1,5 @@
-
+export { Message } from './Message'
+export { Loader } from './Loader'
 export { Rating } from './Rating'
 export { Product } from './Product'
 export { Header } from './Header'
