@@ -2,7 +2,12 @@ import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import { Header, Footer } from './components/lib'
-import { HomeLayout, ProductLayout, CartLayout } from './layouts/lib'
+import {
+  HomeLayout,
+  ProductLayout,
+  CartLayout,
+  LoginLayout,
+} from './layouts/lib'
 
 const App = () => {
   return (
@@ -10,9 +15,11 @@ const App = () => {
       <Header />
       <main className='py-3'>
         <Container>
-          <Route path='/' component={HomeLayout} exact />
+          <Route path='/login' component={LoginLayout} />
+          <Route path='/cart/:id?' component={CartLayout} />
           <Route path='/product/:id' component={ProductLayout} />
           <Route path='/cart/:id?' component={CartLayout} />
+          <Route path='/' component={HomeLayout} exact />
         </Container>
       </main>
       <Footer />
