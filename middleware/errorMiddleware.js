@@ -5,13 +5,12 @@ const notFound = (req, res, next) => {
   next(error)
 }
 
-//Other error handling
 const errorHandler = (err, req, res, next) => {
-  console.log(`Error: ${err}`.yellow.bold)
-  const statusCode = res.statusCode === 200 ? 500 : res.StatusCode
-  res.status(statusCode)
-  res.json({
-    message: err.message,
+  const statusCode = res.statusCode === 200 ? 500 : res.statusCode
+  const errMessage = String(err).split('\n', 2)[0]
+  console.log(`${statusCode} -- ${errMessage}`.yellow.bold)
+  res.status(statusCode).json({
+    message: errMessage,
     stack: process.env.NODE_ENV === 'production' ? null : err.stack,
   })
 }
