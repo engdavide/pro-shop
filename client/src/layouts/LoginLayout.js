@@ -18,7 +18,7 @@ export const LoginLayout = ({ location, history }) => {
 
   useEffect(() => {
     if (userInfo) {
-      history.pushState(redirect)
+      history.push(redirect)
     }
   }, [history, userInfo, redirect])
 
@@ -29,7 +29,7 @@ export const LoginLayout = ({ location, history }) => {
   return (
     <FormContainer>
       <h1>Sign In</h1>
-      {error && <Message variant='danger'>error</Message>}
+      {error && <Message variant='danger'>{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='email'>
