@@ -10,3 +10,4 @@ export { CartLayout } from './CartLayout'
 //User and register
 export { LoginLayout } from './LoginLayout'
 export { RegisterLayout } from './RegisterLayout'
+export { UserProfileLayout } from './UserProfileLayout'
