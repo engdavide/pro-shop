@@ -43,7 +43,33 @@ const getUserProfile = async (req, res) => {
   }
 }
 
-// @desc Register net user profile
+// @desc Update user profile
+// @route PUT /api/users/profile
+// @access private
+const updateUserProfile = async (req, res) => {
+  const user = await User.findById(req.user._id)
+
+  if (user) {
+    user.name = req.body.name || user.name
+    user.email = req.body.email || user.email
+    if (req.body.password) {
+      user.password = req.body.password
+    }
+    const updatedUser = await user.save()
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+      token: generateToken(updatedUser._id),
+    })
+  } else {
+    res.status(404)
+    throw new Error('User not found?')
+  }
+}
+
+// @desc Register new user
 // @route POST /api/users
 // @access public
 const registerUser = async (req, res) => {
@@ -75,4 +101,4 @@ const registerUser = async (req, res) => {
   }
 }
 
-export { authUser, registerUser, getUserProfile }
+export { authUser, registerUser, getUserProfile, updateUserProfile }

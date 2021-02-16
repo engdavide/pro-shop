@@ -3,6 +3,7 @@ import {
   authUser,
   registerUser,
   getUserProfile,
+  updateUserProfile,
 } from '../controllers/userController.js'
 import { protect } from '../middleware/authMiddleware.js'
 const api = express.Router()
@@ -16,5 +17,6 @@ const use = (fn) => (req, res, next) => {
 api.post('/login', use(authUser))
 api.post('/', use(registerUser))
 api.get('/profile', protect, use(getUserProfile))
+api.put('/profile', protect, use(updateUserProfile))
 
 export default api
