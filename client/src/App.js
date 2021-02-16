@@ -7,6 +7,7 @@ import {
   ProductLayout,
   CartLayout,
   LoginLayout,
+  RegisterLayout,
 } from './layouts/lib'
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
           <Route path='/cart/:id?' component={CartLayout} />
           <Route path='/product/:id' component={ProductLayout} />
           <Route path='/cart/:id?' component={CartLayout} />
+          <Route path='/register' component={RegisterLayout} />
           <Route path='/' component={HomeLayout} exact />
         </Container>
       </main>
