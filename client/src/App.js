@@ -10,6 +10,7 @@ import {
   RegisterLayout,
   UserProfileLayout,
   ShippingLayout,
+  PaymentLayout,
 } from './layouts/lib'
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
           <Route path='/cart/:id?' component={CartLayout} />
           <Route path='/product/:id' component={ProductLayout} />
           <Route path='/shipping' component={ShippingLayout} />
+          <Route path='/payment' component={PaymentLayout} />
           <Route path='/register' component={RegisterLayout} />
           <Route path='/profile' component={UserProfileLayout} />
           <Route path='/' component={HomeLayout} exact />

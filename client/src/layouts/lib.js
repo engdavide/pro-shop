@@ -7,6 +7,7 @@ export { HomeLayout } from './HomeLayout'
 export { ProductLayout } from './ProductLayout'
 export { CartLayout } from './CartLayout'
 export { ShippingLayout } from './ShippingLayout'
+export { PaymentLayout } from './PaymentLayout'
 
 //User and register
 export { LoginLayout } from './LoginLayout'

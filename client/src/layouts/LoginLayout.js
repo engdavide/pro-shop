@@ -38,15 +38,17 @@ export const LoginLayout = ({ location, history }) => {
             type='email'
             placeholder='email@email.com'
             value={email}
+            autoComplete='email'
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Form.Group controlId='email'>
+        <Form.Group controlId='password'>
           <Form.Label>Password</Form.Label>
           <Form.Control
             type='password'
             placeholder='password'
             value={password}
+            autoComplete='current-password'
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
