@@ -9,6 +9,7 @@ import {
   LoginLayout,
   RegisterLayout,
   UserProfileLayout,
+  ShippingLayout,
 } from './layouts/lib'
 
 const App = () => {
@@ -20,7 +21,7 @@ const App = () => {
           <Route path='/login' component={LoginLayout} />
           <Route path='/cart/:id?' component={CartLayout} />
           <Route path='/product/:id' component={ProductLayout} />
-          <Route path='/cart/:id?' component={CartLayout} />
+          <Route path='/shipping' component={ShippingLayout} />
           <Route path='/register' component={RegisterLayout} />
           <Route path='/profile' component={UserProfileLayout} />
           <Route path='/' component={HomeLayout} exact />
