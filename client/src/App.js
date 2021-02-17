@@ -11,6 +11,7 @@ import {
   UserProfileLayout,
   ShippingLayout,
   PaymentLayout,
+  PlaceorderLayout,
 } from './layouts/lib'
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
           <Route path='/product/:id' component={ProductLayout} />
           <Route path='/shipping' component={ShippingLayout} />
           <Route path='/payment' component={PaymentLayout} />
+          <Route path='/placeorder' component={PlaceorderLayout} />
           <Route path='/register' component={RegisterLayout} />
           <Route path='/profile' component={UserProfileLayout} />
           <Route path='/' component={HomeLayout} exact />

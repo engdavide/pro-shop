@@ -24,9 +24,8 @@ export const PaymentLayout = ({ history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(savePaymentMethod({ paymentMethod }))
-    console.log('payment method changed')
-    //history.push('/placeorder')
+    dispatch(savePaymentMethod(paymentMethod))
+    history.push('/placeorder')
   }
 
   return (
@@ -40,7 +39,7 @@ export const PaymentLayout = ({ history }) => {
             <Form.Check
               type='radio'
               label='PayPal or Credit Card'
-              id='Paypal'
+              id='PayPal'
               name='paymentMethod'
               value='PayPal'
               checked={paymentMethod === 'PayPal'}
