@@ -7,6 +7,27 @@ import { Message, CheckoutSteps } from '../components/lib'
 export const PlaceorderLayout = () => {
   const cart = useSelector((state) => state.cart)
 
+  const placeorderHandler = () => {
+    console.log('submited')
+  }
+
+  //Prices:
+  const addDecimals = (num) => {
+    return (Math.round(num * 100) / 100).toFixed(2)
+  }
+
+  cart.itemsPrice = addDecimals(
+    cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+  )
+
+  cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 10)
+
+  cart.taxPrice = addDecimals(Number((cart.itemsPrice * 0.15).toFixed(2)))
+
+  cart.totalPrice = addDecimals(
+    Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)
+  )
+
   return (
     <>
       <CheckoutSteps step1 step2 step3 step4 />
@@ -60,6 +81,51 @@ export const PlaceorderLayout = () => {
               )}
             </ListGroup.Item>
           </ListGroup>
+        </Col>
+        <Col md={4}>
+          <Card>
+            <ListGroup variant='flush'>
+              <ListGroup.Item>
+                <h2>Order Summary</h2>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Items:</Col>
+                  <Col>{cart.itemsPrice}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Shipping:</Col>
+                  <Col>{cart.shippingPrice}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Tax:</Col>
+                  <Col>{cart.taxPrice}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Total:</Col>
+                  <Col>
+                    <strong>{cart.totalPrice}</strong>
+                  </Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Button
+                  type='button'
+                  classHame='btn-block'
+                  disabled={cart.cartItems === 0}
+                  onClick={placeorderHandler}
+                >
+                  Place Order
+                </Button>
+              </ListGroup.Item>
+            </ListGroup>
+          </Card>
         </Col>
       </Row>
     </>
