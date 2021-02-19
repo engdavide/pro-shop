@@ -1,15 +1,37 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Message, CheckoutSteps } from '../components/lib'
+import { createOrder } from '../actions/orderActions'
 
-export const PlaceorderLayout = () => {
+export const PlaceorderLayout = ({ history }) => {
   const cart = useSelector((state) => state.cart)
+  const dispatch = useDispatch()
+
+  const orderCreate = useSelector((state) => state.orderCreate)
+  const { order, success, error } = orderCreate
 
   const placeorderHandler = () => {
-    console.log('submited')
+    dispatch(
+      createOrder({
+        orderItems: cart.cartItems,
+        shippingAddress: cart.shippingAddress,
+        paymentMethod: cart.paymentMethod,
+        itemsPrice: cart.itemsPrice,
+        shippingPrice: cart.shippingPrice,
+        taxPrice: cart.taxPrice,
+        totalPrice: cart.totalPrice,
+      })
+    )
   }
+
+  useEffect(() => {
+    if (success) {
+      history.push(`/order/${order._id}`)
+    }
+    // eslint-disable-next-line
+  }, [history, success])
 
   //Prices:
   const addDecimals = (num) => {
@@ -40,8 +62,8 @@ export const PlaceorderLayout = () => {
                 <strong>
                   Address:
                   {cart.shippingAddress.address}, {cart.shippingAddress.city},
-                  {cart.shippingAddress.stateProvince},{' '}
-                  {cart.shippingAddress.postalCode},
+                  {cart.shippingAddress.stateProvince},
+                  {cart.shippingAddress.postalCode}
                 </strong>
               </p>
             </ListGroup.Item>
@@ -115,9 +137,12 @@ export const PlaceorderLayout = () => {
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
+                <ListGroup.Item>
+                  {error && <Message variant='danger'>{error}</Message>}
+                </ListGroup.Item>
                 <Button
                   type='button'
-                  classHame='btn-block'
+                  className='btn-block'
                   disabled={cart.cartItems === 0}
                   onClick={placeorderHandler}
                 >

@@ -10,6 +10,7 @@ import {
   userDetailsReducer,
   userProfileUpdateReducer,
 } from './reducers/user'
+import { orderCreateReducer } from './reducers/order'
 
 const reducer = combineReducers({
   productList: productListReducer,
@@ -19,6 +20,7 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userProfileUpdateReducer,
+  orderCreate: orderCreateReducer,
 })
 
 //Load local storage items
