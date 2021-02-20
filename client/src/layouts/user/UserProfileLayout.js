@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 
-import { getUserDetails, updateUserProfile } from '../actions/userActions'
-import { Message, Loader } from '../components/lib'
+import { getUserDetails, updateUserProfile } from '../../actions/userActions'
+import { Message, Loader } from '../../components/lib'
 
 export const UserProfileLayout = ({ location, history }) => {
   const [name, setName] = useState('')

@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Form, Button, Col } from 'react-bootstrap'
 
-import { savePaymentMethod } from '../actions/cartActions'
+import { savePaymentMethod } from '../../actions/cartActions'
 import {
   Message,
   Loader,
   FormContainer,
   CheckoutSteps,
-} from '../components/lib'
+} from '../../components/lib'
 
 export const PaymentLayout = ({ history }) => {
   const cart = useSelector((state) => state.cart)

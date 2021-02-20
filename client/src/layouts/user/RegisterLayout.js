@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 
-import { register } from '../actions/userActions'
-import { Message, Loader, FormContainer } from '../components/lib'
+import { register } from '../../actions/userActions'
+import { Message, Loader, FormContainer } from '../../components/lib'
 
 export const RegisterLayout = ({ location, history }) => {
   const [name, setName] = useState('')

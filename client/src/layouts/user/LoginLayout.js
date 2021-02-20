@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 
-import { login } from '../actions/userActions'
-import { Message, Loader, FormContainer } from '../components/lib'
+import { login } from '../../actions/userActions'
+import { Message, Loader, FormContainer } from '../../components/lib'
 
 export const LoginLayout = ({ location, history }) => {
   const [email, setEmail] = useState('')

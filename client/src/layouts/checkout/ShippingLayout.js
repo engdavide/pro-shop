@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Form, Button } from 'react-bootstrap'
 
-import { saveShippingAddress } from '../actions/cartActions'
+import { saveShippingAddress } from '../../actions/cartActions'
 import {
   Message,
   Loader,
   FormContainer,
   CheckoutSteps,
-} from '../components/lib'
+} from '../../components/lib'
 
 export const ShippingLayout = ({ history }) => {
   const cart = useSelector((state) => state.cart)

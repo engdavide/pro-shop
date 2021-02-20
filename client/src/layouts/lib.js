@@ -2,15 +2,18 @@
 
 //Primary
 export { HomeLayout } from './HomeLayout'
-
-//Products, cart, checkout
 export { ProductLayout } from './ProductLayout'
-export { CartLayout } from './CartLayout'
-export { ShippingLayout } from './ShippingLayout'
-export { PaymentLayout } from './PaymentLayout'
-export { PlaceorderLayout } from './PlaceorderLayout'
+
+//cart, checkout
+export { CartLayout } from './checkout/CartLayout'
+export { ShippingLayout } from './checkout/ShippingLayout'
+export { PaymentLayout } from './checkout/PaymentLayout'
+export { PlaceorderLayout } from './checkout/PlaceorderLayout'
+
+//orders
+export { OrderIndexLayout } from './orders/OrderIndexLayout'
 
 //User and register
-export { LoginLayout } from './LoginLayout'
-export { RegisterLayout } from './RegisterLayout'
-export { UserProfileLayout } from './UserProfileLayout'
+export { LoginLayout } from './user/LoginLayout'
+export { RegisterLayout } from './user/RegisterLayout'
+export { UserProfileLayout } from './user/UserProfileLayout'
