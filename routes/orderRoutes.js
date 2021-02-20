@@ -1,5 +1,9 @@
 import express from 'express'
-import { addOrderItems } from '../controllers/orderController.js'
+import {
+  addOrderItems,
+  getOrderDetails,
+  getAllOrders,
+} from '../controllers/orderController.js'
 const api = express.Router()
 
 import { protect } from '../middleware/authMiddleware.js'
@@ -11,5 +15,7 @@ const use = (fn) => (req, res, next) => {
 // Routes are /api/orders
 
 api.post('/', protect, use(addOrderItems))
+api.get('/', protect, use(getAllOrders))
+api.get('/:id', protect, use(getOrderDetails))
 
 export default api

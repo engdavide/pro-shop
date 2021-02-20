@@ -1,7 +1,7 @@
 import express from 'express'
 import Order from '../models/Order.js'
 
-// @desc Create new item
+// @desc Create new order
 // @route POST /api/orders
 // @access Private
 export const addOrderItems = async (req, res) => {
@@ -33,4 +33,20 @@ export const addOrderItems = async (req, res) => {
     const createdOrder = await order.save()
     res.status(201).json(createdOrder)
   }
+}
+
+// @desc Get existing order
+// @route GET /api/orders/:id
+// @access Private
+export const getOrderDetails = async (req, res) => {
+  const foundOrder = await Order.findById(req.params.id)
+  res.json(foundOrder)
+}
+
+// @desc Get existing order
+// @route GET /api/orders
+// @access Private
+export const getAllOrders = async (req, res) => {
+  const foundOrders = await Order.find({})
+  res.json(foundOrders)
 }
