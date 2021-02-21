@@ -6,6 +6,9 @@ import {
   ORDER_GET_ALL_FAIL,
   ORDER_GET_ALL_SUCCESS,
   CART_REMOVE_ALL_ITEMS,
+  ORDER_GET_DETAILS_REQUEST,
+  ORDER_GET_DETAILS_SUCCESS,
+  ORDER_GET_DETAILS_FAIL,
 } from './types'
 import axios from 'axios'
 
@@ -60,18 +63,44 @@ export const getAllOrders = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-    console.log('sending axios request')
     const { data } = await axios.get('/api/orders', config)
-    console.log(data)
     dispatch({
       type: ORDER_GET_ALL_SUCCESS,
       success: true,
       payload: data,
     })
   } catch (error) {
-    console.log(`error in getAllOrders: ${error}`)
     dispatch({
       type: ORDER_GET_ALL_FAIL,
+      error: error,
+    })
+  }
+}
+
+export const getOrderById = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: ORDER_GET_DETAILS_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+    const { data } = await axios.get(`/api/orders/${id}`, config)
+    dispatch({
+      type: ORDER_GET_DETAILS_SUCCESS,
+      success: true,
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: ORDER_GET_DETAILS_FAIL,
       error: error,
     })
   }

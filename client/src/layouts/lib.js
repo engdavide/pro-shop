@@ -12,6 +12,7 @@ export { PlaceorderLayout } from './checkout/PlaceorderLayout'
 
 //orders
 export { OrderIndexLayout } from './orders/OrderIndexLayout'
+export { OrderDetailsLayout } from './orders/OrderDetailsLayout'
 
 //User and register
 export { LoginLayout } from './user/LoginLayout'
