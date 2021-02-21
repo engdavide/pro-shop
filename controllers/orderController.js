@@ -35,15 +35,23 @@ export const addOrderItems = async (req, res) => {
   }
 }
 
-// @desc Get existing order
+// @desc Get existing order Details
 // @route GET /api/orders/:id
 // @access Private
-export const getOrderDetails = async (req, res) => {
-  const foundOrder = await Order.findById(req.params.id)
-  res.json(foundOrder)
+export const getOrderById = async (req, res) => {
+  const foundOrder = await Order.findById(req.params.id).populate(
+    'user',
+    'name email'
+  )
+  if (foundOrder) {
+    res.json(foundOrder)
+  } else {
+    res.status(404)
+    throw new Error('order not found')
+  }
 }
 
-// @desc Get existing order
+// @desc Get existing order Index
 // @route GET /api/orders
 // @access Private
 export const getAllOrders = async (req, res) => {

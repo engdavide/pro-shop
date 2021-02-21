@@ -1,7 +1,7 @@
 import express from 'express'
 import {
   addOrderItems,
-  getOrderDetails,
+  getOrderById,
   getAllOrders,
 } from '../controllers/orderController.js'
 const api = express.Router()
@@ -16,6 +16,6 @@ const use = (fn) => (req, res, next) => {
 
 api.post('/', protect, use(addOrderItems))
 api.get('/', protect, use(getAllOrders))
-api.get('/:id', protect, use(getOrderDetails))
+api.get('/:id', protect, use(getOrderById))
 
 export default api
