@@ -4,6 +4,7 @@ import { Form, Button, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 import { getUserDetails, updateUserProfile } from '../../actions/userActions'
+import { getAllOrders } from '../../actions/orderActions'
 import { Message, Loader } from '../../components/lib'
 
 export const UserProfileLayout = ({ location, history }) => {
@@ -13,6 +14,11 @@ export const UserProfileLayout = ({ location, history }) => {
   const [message, setMessage] = useState(null) //not in use
 
   const dispatch = useDispatch()
+
+  const orderIndex = useSelector((state) => state.orderIndex)
+  const { orders } = orderIndex
+  const ordersError = orderIndex.error
+  const ordersLoading = orderIndex.loading
 
   const userDetails = useSelector((state) => state.userDetails)
   const { loading, error, user } = userDetails
@@ -29,6 +35,7 @@ export const UserProfileLayout = ({ location, history }) => {
     if (!userInfo) {
       history.push('/login')
     } else {
+      dispatch(getAllOrders())
       if (!user.name) {
         dispatch(getUserDetails('profile'))
       } else {
@@ -85,8 +92,22 @@ export const UserProfileLayout = ({ location, history }) => {
       </Col>
       <Col md={6}>
         <h2>My Orders</h2>
-
         <Link to='/orders'>See all orders here</Link>
+        {ordersLoading ? (
+          <Loader />
+        ) : ordersError ? (
+          <Message variant='danger'>{ordersError}</Message>
+        ) : orders ? (
+          <Row>
+            {orders.map((order) => (
+              <Row>
+                <Link to={`/orders/${order._id}`}>{order._id}</Link>
+              </Row>
+            ))}
+          </Row>
+        ) : (
+          ''
+        )}
       </Col>
     </Row>
   )

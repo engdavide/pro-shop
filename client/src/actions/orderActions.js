@@ -60,15 +60,16 @@ export const getAllOrders = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-
+    console.log('sending axios request')
     const { data } = await axios.get('/api/orders', config)
-
+    console.log(data)
     dispatch({
       type: ORDER_GET_ALL_SUCCESS,
       success: true,
       payload: data,
     })
   } catch (error) {
+    console.log(`error in getAllOrders: ${error}`)
     dispatch({
       type: ORDER_GET_ALL_FAIL,
       error: error,

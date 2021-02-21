@@ -11,8 +11,10 @@ export const OrderIndexLayout = () => {
   const { loading, error, orders } = orderIndex
 
   useEffect(() => {
-    dispatch(getAllOrders())
-  }, [dispatch])
+    if (!error && !orders) {
+      dispatch(getAllOrders())
+    }
+  }, [dispatch, error, orders])
 
   return (
     <div>

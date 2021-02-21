@@ -11,6 +11,7 @@ export const orderCreateReducer = (state = {}, action) => {
   switch (action.type) {
     case ORDER_CREATE_REQUEST:
       return {
+        ...state,
         loading: true,
       }
     case ORDER_CREATE_SUCCESS:

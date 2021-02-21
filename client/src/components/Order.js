@@ -12,11 +12,21 @@ export const Order = ({ order }) => {
       <Card.Body>
         <Link to={`/orders/${order._id}`}>
           <Card.Title as='div'>
-            <strong>words</strong>
+            <strong>
+              {order.orderItems.reduce((acc, item) => acc + item.qty, 0)} Items
+            </strong>
           </Card.Title>
         </Link>
 
         <Card.Text as='h3'>${order.totalPrice}</Card.Text>
+        {order.isPaid ? (
+          <Card.Text as='h4'>Paid on {order.paidAt}</Card.Text>
+        ) : (
+          <Link to={`orders/${order._id}/payment`}> Pay for Order</Link>
+        )}
+        {order.isDelivered && (
+          <Card.Text as='h4'>Shipped on {order.deliveredAt}</Card.Text>
+        )}
       </Card.Body>
     </Card>
   )
