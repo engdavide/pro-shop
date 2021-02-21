@@ -43,7 +43,10 @@ export const createOrder = (order) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: ORDER_CREATE_FAIL,
-      error: error,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
     })
   }
 }
@@ -59,7 +62,6 @@ export const getAllOrders = () => async (dispatch, getState) => {
     } = getState()
     const config = {
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
@@ -72,7 +74,10 @@ export const getAllOrders = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: ORDER_GET_ALL_FAIL,
-      error: error,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
     })
   }
 }
@@ -88,20 +93,21 @@ export const getOrderById = (id) => async (dispatch, getState) => {
     } = getState()
     const config = {
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
     const { data } = await axios.get(`/api/orders/${id}`, config)
     dispatch({
       type: ORDER_GET_DETAILS_SUCCESS,
-      success: true,
       payload: data,
     })
   } catch (error) {
     dispatch({
       type: ORDER_GET_DETAILS_FAIL,
-      error: error,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
     })
   }
 }

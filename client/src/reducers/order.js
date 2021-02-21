@@ -37,6 +37,7 @@ export const orderIndexReducer = (state = {}, action) => {
   switch (action.type) {
     case ORDER_GET_ALL_REQUEST:
       return {
+        ...state,
         loading: true,
       }
     case ORDER_GET_ALL_SUCCESS:
@@ -55,10 +56,14 @@ export const orderIndexReducer = (state = {}, action) => {
   }
 }
 
-export const orderDetailsReducer = (state = {}, action) => {
+export const orderDetailsReducer = (
+  state = { loading: true, orderItems: [], shippingAddress: {} },
+  action
+) => {
   switch (action.type) {
     case ORDER_GET_DETAILS_REQUEST:
       return {
+        ...state,
         loading: true,
       }
     case ORDER_GET_DETAILS_SUCCESS:

@@ -39,6 +39,7 @@ export const addOrderItems = async (req, res) => {
 // @route GET /api/orders/:id
 // @access Private
 export const getOrderById = async (req, res) => {
+  console.log(`id passed in: ${req.params.id}`)
   const foundOrder = await Order.findById(req.params.id).populate(
     'user',
     'name email'
