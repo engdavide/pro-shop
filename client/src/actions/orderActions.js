@@ -5,6 +5,7 @@ import {
   ORDER_GET_ALL_REQUEST,
   ORDER_GET_ALL_FAIL,
   ORDER_GET_ALL_SUCCESS,
+  CART_REMOVE_ALL_ITEMS,
 } from './types'
 import axios from 'axios'
 
@@ -27,10 +28,15 @@ export const createOrder = (order) => async (dispatch, getState) => {
 
     const { data } = await axios.post('/api/orders', order, config)
 
-    dispatch({
-      type: ORDER_CREATE_SUCCESS,
-      payload: data,
-    })
+    if (data) {
+      dispatch({
+        type: ORDER_CREATE_SUCCESS,
+        payload: data,
+      })
+      dispatch({
+        type: CART_REMOVE_ALL_ITEMS,
+      })
+    }
   } catch (error) {
     dispatch({
       type: ORDER_CREATE_FAIL,

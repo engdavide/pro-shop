@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
-import { Message, Loader } from '../../components/lib'
+import { Row, Col } from 'react-bootstrap'
+import { Message, Loader, Order } from '../../components/lib'
 import { getAllOrders } from '../../actions/orderActions'
 
 export const OrderIndexLayout = () => {
@@ -23,7 +22,13 @@ export const OrderIndexLayout = () => {
       ) : error ? (
         <Message variant='danger'>{error}</Message>
       ) : orders ? (
-        <Message variant='info'>orders here</Message>
+        <Row>
+          {orders.map((order) => (
+            <Col key={order._id} sm={12} md={6} lg={4}>
+              <Order order={order} />
+            </Col>
+          ))}
+        </Row>
       ) : (
         ''
       )}
